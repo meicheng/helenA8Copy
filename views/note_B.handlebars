@@ -1,0 +1,229 @@
+<!doctype html>
+
+<html>
+<head>
+	<title>WeCast</title>	
+
+	<meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+  <!--CSS Files -->
+	<link href="/css/bootstrap.min.css" rel="stylesheet">
+	<link href="/css/bootstrap-theme.min.css" rel="stylesheet">
+  <link href="/css/main.css" rel="stylesheet">
+
+</head>
+
+<body>
+ <!-- Navbar -->
+    <nav class="navbar navbar-default navbar-fixed-top">
+      <div class="container">
+        <div class="navbar-header">
+          <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#navbar" aria-expanded="false" aria-controls="navbar">
+            <span class="sr-only">Toggle navigation</span>
+            <span class="icon-bar"></span>
+            <span class="icon-bar"></span>
+            <span class="icon-bar"></span>
+          </button>
+          <a class="navbar-brand" href="/index">WeCast</a>
+        </div>
+        <div id="navbar" class="navbar-collapse collapse">
+          <ul class="nav navbar-nav">
+            <li class="active"><a href="/index">Home</a></li>
+            <li><a href="/profile">Profile</a></li>
+            <li><a href="/help">Help</a></li>
+          </ul>
+          <ul class="nav navbar-nav navbar-right">
+            <li><a href="/">Logout</a></li>
+          </ul>
+        </div>
+      </div>
+    </nav>
+
+  <div class="container">
+    <div class="page-title">
+      <h4>Note Title</h4>
+    </div> 
+
+    <!-- Everything Here -->
+    <div class = "all_btn">
+      <div class="row"> <!-- recording bar --> 
+        <table id = "wrapper" cellspacing="10">
+          <tr>
+          <td><img src = "/pics/recording_bar.png" width = "270" height = "170"></td>
+        </tr>
+        <tr>
+          <td><h2 id="time">5:20</h2></td> <!--recording time--> 
+        </tr>
+        <tr>
+          <td> <img src = "/pics/reminder.png" width = "275" height = "34"></td>
+        </tr>
+        </table>
+      </div>
+
+       <table id = "wrapper_btn"> <!-- 3/1/2018 edit --> 
+        <tr> <!-- for bookmark and camera --> 
+          <td id = "round_bookmark">
+            <a href = "#bookmark" class="modal-toggle" id ="round_bookmark" data-toggle="modal" data-target="#bookmark">
+            <img src = "/pics/round_bookmark.png" width = "70" height = "70"></a>
+            </td>
+          <td colspan="2" id="round_camera">
+            <a href="#camera" class="modal-toggle" id="round_camera" data-toggle="modal" data-target="#camera">
+              <img src = "/pics/round_camera.png" width = "70" height = "70">
+            </a>
+          </td>
+        </tr>
+      </table>
+
+      <table id= "wrapper_btn">
+        <tr>
+          <td></td>
+          <td colspan = "2"></td>
+          <td colspan = "3"></td>
+          <td colspan = "4">
+            <a href = "/note_function" id = "mic_btn"><img src = "/pics/round_audio.png" width = "70" height = "70" id="roundAudio"></a>
+          </td>
+          <td colspan="5" id ="recording_btn">
+            <img src = "/pics/red_record.png" width = "70" height = "70" id="recordButton">
+            <img src = "/pics/red_pause.png" width = "70" height = "70" id="recordButton2">
+            </td>
+          <td colspan="6">
+            <img src = "/pics/done_btn.png" width = "65" height = "55" id="doneButton" onclick="doneFunction()">
+          </td>
+          <td colspan="7"></td>
+         <td colspan="8"></td>
+         <td colspan="9"></td>
+         <td colspan="10"></td>
+        </tr>
+      </table>
+
+       <!-- After the Done Button was pressed --> 
+       <div class ="tab">
+        <table id="wrapper_tab" style ="width:100%">
+          <tr>
+           <th><button class="tablinks" onclick="openTab(event, 'bookmark')" id="defaultOpen">Bookmark</button></th>
+           <th colspan ="2"><button class="tablinks" onclick="openTab(event, 'picture')">Picture</button></th>
+         </tr>
+       </table>
+       </div> <!-- end of tab --> 
+
+       <!-- Tab content -->
+       <div class="scrollmenu" >
+       <div id = "bookmark" class ="tabcontent">
+         <p>Lorem ipsum dolor sit amet</p>
+         <br>
+         <p>Duis aute irure dolor in reprehenderit</p>
+                  <br>
+         <p>Duis aute irure dolor in reprehenderit</p>
+                  <br>
+         <p>Duis aute irure dolor in reprehenderit</p>
+                  <br>
+         <p>Duis aute irure dolor in reprehenderit</p>
+                  <br>
+         <p>Duis aute irure dolor in reprehenderit</p>
+                  <br>
+         <p>Duis aute irure dolor in reprehenderit</p>
+       </div>
+
+       <div id = "picture" class="tabcontent">
+        <table id = "wrapper">
+          <tr>
+            <td> <img src="/pics/lec_1.jpg"></td>
+          </tr>
+          <tr>
+             <td> <img src="/pics/lec_2.jpg"></td>
+          </tr>
+          <tr>
+             <td> <img src="/pics/lec_3.jpg"></td>
+          </tr>
+       </table>
+       </div>
+      </div>
+     </div> <!-- end of popup-->
+   </div> <!-- end of current button --> 
+
+
+  </div>
+  <!-- back button -->
+  <div class = "back">
+    <a href = "/folder/{{folderID}}"><img src = "/pics/arrow.png" width="55" height = "55"></a>
+  </div>
+  <!-- end of back button --> 
+
+  <!-- Modal -->
+  <div class="modal fade" id="camera" tabindex="-1" role="dialog" aria-labelledby="modalLabel" aria-hidden="true">
+    <div class="modal-dialog" role="document">
+      <div class="modal-content">
+        <div class="modal-header">
+          <h5 class="modal-title" id="modalLabel">Camera</h5>
+          <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+            <span aria-hidden="true">&times;</span>
+          </button>
+        </div>
+        <div class="modal-body">
+          <video id="video" width="100%" height="100%" autoplay></video>
+          <button id="snap" class="btn">Snap Photo</button>
+          <canvas id="canvas" style="display:none"></canvas>
+          <button id="retake" class="btn" style="display:none">Retake Photo</button>
+          <input type="file" accept="image/*" capture="camera" />
+
+          <div class="modal-footer">
+            <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+            <button id="savePhoto" type="button" data-dismiss="modal" class="btn btn-primary">Save Photo</button>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Modal for bookmark -->
+  <div class="modal fade" id="bookmark" tabindex="-1" role="dialog" aria-labelledby="modalLabel" aria-hidden="true">
+    <div class="modal-dialog" role="document">
+      <div class="modal-content">
+        <div class="modal-header">
+          <h5 class="modal-title" id="modalLabel">Bookmark</h5>
+          <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+            <span aria-hidden="true">&times;</span>
+          </button>
+        </div>
+        <div class="modal-body">
+
+          <p>Added at 5:20</p>
+          <input type="text" class="form-control" id="filter" value="Add a note">
+          <div class="modal-footer">
+            <button id="savePhoto" type="button" data-dismiss="modal" class="btn btn-primary">Save Bookmark</button>
+            <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Modal for done button -->
+  <div class="modal fade" id="doneBtn" tabindex="-1" role="dialog" aria-labelledby="modalLabel" aria-hidden="true">
+    <div class="modal-dialog" role="document">
+      <div class="modal-content">
+        <div class="modal-header">
+          <h5 class="modal-title" id="modalLabel">Finish Recording?</h5>
+          <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+            <span aria-hidden="true">&times;</span>
+          </button>
+        </div>
+        <div class="modal-body">
+          <p>You're about to save your note recording. You will be unable to change your audio afterward. Are you sure you want to finalize it?</p>
+          <div class="modal-footer">
+            <button id="savePhoto" type="button" data-dismiss="modal" class="btn btn-primary">Continue Recording</button>
+            <button type="button" class="btn btn-secondary" data-dismiss="modal" onclick="doneFunction()">Finalize</button>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!--Scripts-->
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+	<script src="/js/bootstrap.min.js"></script>
+	<script src="/js/note_b.js"></script>
+
+</body>
+</html>
